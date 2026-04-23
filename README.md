@@ -15,6 +15,50 @@ Sensors | `/api/v1/sensors`
 
 Readings | `/api/v1/sensors/{id}/readings` 
 
+## Sample curl Commands
+
+### 1. Get the discovery endpoint
+```bash
+curl -X GET http://localhost:8080/smart-campus-api/api/v1
+```
+
+### 2. Get all rooms
+```bash
+curl -X GET http://localhost:8080/smart-campus-api/api/v1/rooms
+```
+
+### 3. Create a new room
+```bash
+curl -X POST http://localhost:8080/smart-campus-api/api/v1/rooms \
+  -H "Content-Type: application/json" \
+  -d '{"id": "HALL-001", "name": "Great Hall", "capacity": 200}'
+```
+
+### 4. Create a new sensor
+```bash
+curl -X POST http://localhost:8080/smart-campus-api/api/v1/sensors \
+  -H "Content-Type: application/json" \
+  -d '{"id": "TEMP-099", "type": "Temperature", "status": "ACTIVE", "currentValue": 20.0, "roomId": "LIB-301"}'
+```
+
+### 5. Get sensors filtered by type
+```bash
+curl -X GET "http://localhost:8080/smart-campus-api/api/v1/sensors?type=CO2"
+```
+
+### 6. Post a reading to a sensor
+```bash
+curl -X POST http://localhost:8080/smart-campus-api/api/v1/sensors/TEMP-001/readings \
+  -H "Content-Type: application/json" \
+  -d '{"value": 23.4}'
+```
+
+### 7. Delete a room
+```bash
+curl -X DELETE http://localhost:8080/smart-campus-api/api/v1/rooms/HALL-001
+```
+
+
 ### Question 1.1: In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
 
