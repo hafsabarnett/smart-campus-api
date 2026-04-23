@@ -62,7 +62,7 @@ curl -X DELETE http://localhost:8080/smart-campus-api/api/v1/rooms/HALL-001
 ### Question 1.1: In your report, explain the default lifecycle of a JAX-RS Resource class. Is a new instance instantiated for every incoming request, or does the runtime treat it as a singleton? Elaborate on how this architectural decision impacts the way you manage and synchronize your in-memory data structures (maps/lists) to prevent data loss or race conditions.
 
 
-In JAX-RS a new instance of the resource class is created for every request that comes in. This means you cant store data in the resource class itself because it gets thrown away after each request.
+In JAX-RS a new instance of the resource class is created for every request that comes in. This means you cant store data in the resource class itself because it gets deleted after each request.
 To fix this I put all the data in a separate class called DataStore using static fields. Static fields stay in memory for the whole time the app is running so the data doesnt get lost. I used ConcurrentHashMap instead of a normal HashMap because multiple requests can come in at the same time and ConcurrentHashMap is thread safe so it wont break if two requests try to write to it at once.
 
 ### Question 1.2: Why is the provision of ”Hypermedia” (links and navigation within responses) considered a hallmark of advanced RESTful design (HATEOAS)? How does this approach benefit client developers compared to static documentation?
