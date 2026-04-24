@@ -4,6 +4,21 @@ Clien-Server architechtures (Smart Campus Sensor and Room Management API - JAX-R
 A RESTful API built with JAX-RS (Jersey) and Apache Tomcat for the University of Westminster 5COSC022W Client-Server Architectures module.
 This API manages Rooms and Sensors across a university campus.
 
+## How to Build & Run
+
+### Requirements
+- Java 8 or higher
+- Apache NetBeans
+- Apache Tomcat 9
+
+### Steps
+1. Open the project in NetBeans
+2. Right-click the project and select **Clean and Build**
+3. Once the output shows "BUILD SUCCESS", right-click the project and select **Run**
+4. Tomcat will start automatically and deploy the application
+5. Visit `http://localhost:8080/smart-campus-api/api/v1` in your browser
+
+
 
 Base URL | `http://localhost:8080/smart-campus-api/api/v1`
 
